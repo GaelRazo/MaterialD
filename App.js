@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, FlatList, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text, StyleSheet, TextInput, FlatList, TouchableOpacity,
+} from 'react-native';
 import {
   Backdrop,
   BackdropSubheader,
@@ -10,7 +13,35 @@ import {
   Stack,
   Pressable
 } from '@react-native-material/core';
+import { ItemClick } from 'native-base/lib/typescript/components/composites/Typeahead/useTypeahead/types';
 
+
+const DATA = [
+  {
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    title: 'First Item',
+  },
+  {
+    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    title: 'Second Item',
+  },
+  {
+    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    title: 'Third Item',
+  },
+  {
+
+    title: 'Third Item',
+  },
+  {
+
+    title: 'Third Item',
+  },
+  {
+
+    title: 'Third Item',
+  },
+];
 
 
 const App = () => {
@@ -93,16 +124,19 @@ const App = () => {
       <BackdropSubheader
         title="General"
       />
-        <Stack>
-        <Pressable style={{ width: 380, height: 180, backgroundColor: "skyblue", marginHorizontal: 15, marginTop: 10, borderRadius:10 }}
-        leading={props => (
-          <HStack>
-             <Button title="Contained" />
-             <Button title="Contained" />
-          </HStack>
-        )}/>
-        <Pressable style={{ width: 380, height: 180, backgroundColor: "skyblue", marginHorizontal: 15, marginTop: 10, borderRadius:10 }} />
-        </Stack>
+      <View style={style.container}>
+        <FlatList
+        data={DATA}
+        renderItem={({item, index}) => (
+          <Button title={item.title} style={style.card}
+          action={()=> console.log(item.name)}></Button>
+        )}
+        >
+            
+        </FlatList>
+      </View>
+
+
     </Backdrop>
   );
 };
@@ -135,6 +169,22 @@ const style = StyleSheet.create({
     padding: 10,
     width: 90
   },
+  container: {
+    marginTop: 5,
+    width: 600,
+  },
+  card: {
+    marginHorizontal: 12,
+    marginTop: 5,
+    width: 380,
+    height: 180,
+    fontWeight: 'bold',
+    backgroundColor: '#F2C94C',
+    alignItems: 'center',
+    alignContent: 'center',
+    borderRadius: 100,
+  },
+
 });
 
 export default App;
