@@ -11,35 +11,53 @@ import {
   Button,
   HStack,
   Stack,
-  Pressable
+  Pressable,
+  Box
 } from '@react-native-material/core';
 import { ItemClick } from 'native-base/lib/typescript/components/composites/Typeahead/useTypeahead/types';
+import { color } from 'native-base/lib/typescript/theme/styled-system';
 
 
 const DATA = [
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'First Item',
+    title: 'Titulo 1',
+    desc: 'Hola1'
   },
   {
     id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Second Item',
+    title: 'Titulo 2',
+    desc: 'Hola2'
   },
   {
     id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
+    title: 'Titulo 3',
+    desc: 'Hola3'
   },
   {
 
-    title: 'Third Item',
+    title: 'Titulo 4',
+    desc: 'Hola4'
   },
   {
 
-    title: 'Third Item',
+    title: 'Titulo 5',
+    desc: 'Hola5'
   },
   {
 
-    title: 'Third Item',
+    title: 'Titulo 6',
+    desc: 'Hola6'
+  },
+  {
+
+    title: 'Tadeo',
+    desc: 'Hola6'
+  },
+  {
+
+    title: 'Tadeo',
+    desc: 'Hola6'
   },
 ];
 
@@ -123,16 +141,59 @@ const App = () => {
       }>
       <BackdropSubheader
         title="General"
+
       />
       <View style={style.container}>
         <FlatList
-        data={DATA}
-        renderItem={({item, index}) => (
-          <Button title={item.title} style={style.card}
-          action={()=> console.log(item.name)}></Button>
-        )}
+        style={{marginBottom:'10%'}}
+          data={DATA}
+          renderItem={({ item, index }) => (
+
+            <TouchableOpacity
+              /*onPress={() =>}*/
+              style={{
+                padding: 15,
+                width: '65%',
+                margin: 5,
+                backgroundColor: "#FFFFFF",
+                borderRadius: 10
+              }}
+            >
+              <HStack>
+              <Box w={92} h={92} m={4} style={{ backgroundColor: '#F2C94C'}}
+              />
+              <Stack
+              style={{
+                    marginHorizontal: '5%'
+                  }}>
+                <Text
+                  style={{
+                    fontSize: 25,
+                    color: '#333333',
+                    fontWeight: 'bold',
+                    letterSpacing: 1,
+                  }}>
+                  {item.title}
+                </Text>
+                <Text
+                  style={{
+                    marginRight:'25%',
+                    marginBottom:'2%',
+                    fontSize: 15,
+                    color: '#333333',
+                    fontWeight: 'normal',
+                    letterSpacing: 1,
+                  }}>
+                  {item.desc}
+                </Text>
+              </Stack>
+
+              </HStack>
+            </TouchableOpacity>
+
+          )}
         >
-            
+
         </FlatList>
       </View>
 
@@ -170,15 +231,16 @@ const style = StyleSheet.create({
     width: 90
   },
   container: {
-    marginTop: 5,
+    margin: 5,
     width: 600,
+    backgroundColor: "#E8E8E8",
   },
   card: {
     marginHorizontal: 12,
     marginTop: 5,
     width: 380,
     height: 180,
-    fontWeight: 'bold',
+
     backgroundColor: '#F2C94C',
     alignItems: 'center',
     alignContent: 'center',
